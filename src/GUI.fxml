@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="577.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <AnchorPane prefHeight="27.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar prefHeight="26.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#importFile" text="Import..." />
+                        <MenuItem mnemonicParsing="false" onAction="#exportFile" text="Export..." />
+                        <MenuItem mnemonicParsing="false" onAction="#exitEditor" text="Exit" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Size">
+                     <items>
+                        <RadioMenuItem fx:id="resize_16" mnemonicParsing="false" onAction="#resizeGrid" selected="true" text="16 * 16">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="defaultSizes" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="resize_32" mnemonicParsing="false" onAction="#resizeGrid" text="32 * 32" toggleGroup="$defaultSizes" />
+                        <RadioMenuItem fx:id="resize_64" mnemonicParsing="false" onAction="#resizeGrid" text="64 * 64" toggleGroup="$defaultSizes" />
+                        <MenuItem mnemonicParsing="false" onAction="#customizeGrid" text="Customize..." />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Effect">
+                    <items>
+                      <MenuItem fx:id="brighter" mnemonicParsing="false" onAction="#setColorEffect" text="Brighter" />
+                        <MenuItem fx:id="darker" mnemonicParsing="false" onAction="#setColorEffect" text="Darker" />
+                        <MenuItem fx:id="saturate" mnemonicParsing="false" onAction="#setColorEffect" text="Saturate" />
+                        <MenuItem fx:id="desaturate" mnemonicParsing="false" onAction="#setColorEffect" text="Desaturate" />
+                        <MenuItem fx:id="grayscale" mnemonicParsing="false" onAction="#setColorEffect" text="Grayscale" />
+                        <MenuItem fx:id="invert" mnemonicParsing="false" onAction="#setColorEffect" text="Invert" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onAboutClicked" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="29.0" prefHeight="59.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+         <children>
+            <ColorPicker fx:id="colorPicker" layoutX="14.0" layoutY="16.0" prefHeight="27.0" prefWidth="57.0" styleClass="split-button" AnchorPane.leftAnchor="20.0" />
+            <Button layoutX="145.0" layoutY="16.0" mnemonicParsing="false" onAction="#clearColor" text="Clear" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="16.0" />
+            <Button layoutX="88.0" layoutY="16.0" mnemonicParsing="false" onAction="#undo" text="Undo" />
+            <Slider fx:id="zoomValue" blockIncrement="5.0" layoutX="347.0" layoutY="22.0" max="50.0" min="10.0" value="30.0" />
+            <Label layoutX="299.0" layoutY="22.0" text="Zoom" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="88.0" prefHeight="436.0" prefWidth="553.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <ScrollPane fx:id="scrollPane" layoutX="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <Canvas fx:id="canvas" height="479.0" width="481.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
