@@ -1,4 +1,4 @@
-# Sprite-Editor
+# ColorItYourself
 A simple sprite editor to edit graphics assets.
 
 The excutable file is in **bin** folder.
